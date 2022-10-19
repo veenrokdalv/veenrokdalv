@@ -1,0 +1,32 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Анонимайзер и сократитель ссылок.">
+    <meta name="keywords" content="Анонимайзер,Сократитель,Ссылок,Veenrok,Veenrokdalv">
+    <meta name="author" content="veenrokdalv">
+    <meta name="robots" content="all">
+    <title>{{ settings.DOMAIN }}</title>
+    <link rel="stylesheet" href="{% static 'core/css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/vendor/materialdesignicons.min.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <main class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-lg-4 col-md-6 col-12">
+                {% bootstrap_messages %}
+                {% block content %}
+
+                {% endblock %}
+
+            </div>
+        </main>
+    </div>
+</body>
+<script src="{% static 'core/js/vendor/bootstrap.min.js' %}" type="application/javascript"></script>
+{% block js %}{% endblock %}
+</html>

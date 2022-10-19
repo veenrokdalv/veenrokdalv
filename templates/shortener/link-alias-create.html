@@ -1,0 +1,17 @@
+{% extends 'shortener/layout.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="text-center fw-bold">
+    {{ counter }}
+</div>
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form=form %}
+    {% bootstrap_button content='Сократить' %}
+</form>
+<div class="text-center fw-bold">
+    {{ data }}
+</div>
+{% endblock %}
