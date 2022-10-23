@@ -33,25 +33,3 @@ class CreateLinkAlias(SuccessMessageMixin, FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        counter_path = Path(settings.BASE_DIR / 'data' / 'counter.txt')
-
-        if counter_path.is_file():
-            with open(counter_path, 'r') as file:
-                counter = int(file.read())
-        else:
-            with open(counter_path, 'w') as file:
-                counter = 0
-
-        counter += 1
-
-        context.update({
-            'settings': settings,
-            'counter': counter,
-            # 'data': f'{is_file}'
-        })
-        with open(counter_path, 'w') as file:
-            file.write(f'{counter}')
-        return context
